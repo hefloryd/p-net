@@ -13,28 +13,23 @@
 # full license information.
 #*******************************************************************/
 
-set(APP_SOURCES
-  ${PROFINET_SOURCE_DIR}/sample_app/main_linux.c)
-set(OSAL_SOURCES
-  ${PROFINET_SOURCE_DIR}/src/osal/linux/osal.c
-  ${PROFINET_SOURCE_DIR}/src/osal/linux/osal_eth.c
-  ${PROFINET_SOURCE_DIR}/src/osal/linux/osal_udp.c
-  )
-set(OSAL_INCLUDES
-  ${PROFINET_SOURCE_DIR}/src/osal/linux
-  )
-set(OSAL_LIBS
-  "dl"
-  "pthread"
-  "rt"
-  )
-
 set(GOOGLE_TEST_INDIVIDUAL TRUE)
 
-set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-unused-parameter -Werror")
-set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
+target_sources(pn_dev PRIVATE
+  sample_app/main_linux.c
+  )
 
-set(CMAKE_C_FLAGS_COVERAGE "-fprofile-arcs -ftest-coverage")
-set(CMAKE_CXX_FLAGS_COVERAGE ${CMAKE_C_FLAGS_COVERAGE})
+target_compile_options(profinet
+  PRIVATE
+  -Wall
+  -Wextra
+  -Werror
+  -Wno-unused-parameter
+  INTERFACE
+  $<$<CONFIG:Coverage>:--coverage>
+  )
 
-set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections")
+target_link_libraries(profinet
+  INTERFACE
+  $<$<CONFIG:Coverage>:--coverage>
+  )

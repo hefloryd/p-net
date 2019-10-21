@@ -13,58 +13,8 @@
 # full license information.
 #*******************************************************************/
 
-if (MSVC)
-  set(OSAL_UUT ${PROFINET_SOURCE_DIR}/src/osal/windows/osal.c)
-endif()
-
-if (UNIX)
-  set(OSAL_UUT ${PROFINET_SOURCE_DIR}/src/osal/linux/osal.c)
-endif()
-
-if (${CMAKE_SYSTEM_NAME} STREQUAL "rt-kernel")
-  set(OSAL_UUT
-    ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel/osal.c
-    ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel/stubs.c
-    )
-endif()
-
-include(AddGoogleTest)
-
-add_definitions(
-  -DUNIT_TEST
-  -DPF_SOMESERVICE_LOG=LOG_STATE_OFF
-  )
-
-add_executable(pf_test
-  # Units to be tested
-  ${PROFINET_SOURCE_DIR}/src/device/pf_block_reader.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_block_writer.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_fspm.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_diag.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmdev.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmdmc.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmina.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmio.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmpbe.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmrdr.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmrpc.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmrs.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmsm.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmsu.c
-  ${PROFINET_SOURCE_DIR}/src/device/pf_cmwrr.c
-  ${PROFINET_SOURCE_DIR}/src/device/pnet_api.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_alarm.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_cpm.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_dcp.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_ppm.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_ptcp.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_scheduler.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_eth.c
-  ${PROFINET_SOURCE_DIR}/src/common/pf_lldp.c
-  ${OSAL_UUT}
-
+target_sources(pf_test PRIVATE
   # Unit tests
-  test_osal.cpp
   test_diag.cpp
   test_cmdev.cpp
   test_cmdmc.cpp
@@ -95,6 +45,53 @@ add_executable(pf_test
   pf_test.cpp
   )
 
-include_directories(${OSAL_INCLUDES} .)
-target_link_libraries(pf_test PUBLIC ${OSAL_LIBS})
-add_gtest(pf_test)
+# Rebuild units to be tested with UNIT_TEST flag set. This is used to
+# mock external dependencies.
+target_sources(pf_test PRIVATE
+  # Units to be tested
+  ${PROFINET_SOURCE_DIR}/src/device/pf_block_reader.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_block_writer.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_fspm.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_diag.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmdev.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmdmc.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmina.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmio.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmpbe.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmrdr.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmrpc.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmrs.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmsm.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmsu.c
+  ${PROFINET_SOURCE_DIR}/src/device/pf_cmwrr.c
+  ${PROFINET_SOURCE_DIR}/src/device/pnet_api.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_alarm.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_cpm.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_dcp.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_ppm.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_ptcp.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_scheduler.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_eth.c
+  ${PROFINET_SOURCE_DIR}/src/common/pf_lldp.c
+  )
+
+get_target_property(PROFINET_OPTIONS profinet COMPILE_OPTIONS)
+target_compile_options(pf_test PRIVATE
+  -DUNIT_TEST
+  ${PROFINET_OPTIONS}
+  )
+
+target_include_directories(pf_test
+  PRIVATE
+  ${PROFINET_SOURCE_DIR}/src
+  ${PROFINET_SOURCE_DIR}/src/common
+  ${PROFINET_SOURCE_DIR}/src/device
+  ${PROFINET_BINARY_DIR}/src
+  )
+
+# Link against profinet target to get the cmake properties for that
+# target, such as include paths and libraries.
+target_link_libraries(pf_test
+  PRIVATE
+  profinet
+  )

@@ -3,6 +3,7 @@
 #include <kern.h>
 #include <shell.h>
 #include <pnet_api.h>
+#include <lwip/inet.h>
 
 #include "main_osal.h"
 #include "main_log.h"

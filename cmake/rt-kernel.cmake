@@ -13,20 +13,24 @@
 # full license information.
 #*******************************************************************/
 
-set(APP_SOURCES
-  ${PROFINET_SOURCE_DIR}/sample_app/main_rtk.c)
-set(OSAL_SOURCES
-  ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel/stubs.c
-  ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel/osal.c
-  ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel/osal_eth.c
-  ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel/osal_udp.c
-  ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel/dwmac1000.c
+target_sources(pn_dev PRIVATE
+  sample_app/main_rtk.c
   )
-set(OSAL_INCLUDES
-  ${PROFINET_SOURCE_DIR}/src/osal/rt-kernel
-  ${RTK}/include
-  ${RTK}/include/kern
-  ${RTK}/include/arch/${ARCH}
-  ${RTK}/include/drivers
-  ${RTK}/lwip/src/include
+
+target_sources(pf_test PRIVATE
+  ${OSAL_DIR}/fixup/stubs.c
+  )
+
+target_compile_options(profinet
+  PRIVATE
+  -Wall
+  -Wextra
+  -Werror
+  -Wno-unused-parameter
+  )
+
+# Workaround duplicate definition of assert by including osal
+# definition before anything else.
+include_directories(BEFORE
+  ${OSAL_DIR}/fixup
   )

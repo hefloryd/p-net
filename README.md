@@ -35,35 +35,50 @@ The stack includes a comprehensive set of unit-tests.
 Prerequisites for all platforms
 ===============================
 
- * CMake 3.11 or later
+ * CMake 3.13 or later
+ * OSAL library
 
-Out-of-tree builds are recommended. Create a build directory and run
-the following commands from that directory. In the following
-instructions, the root folder for the repo is assumed to be an
-absolute or relative path in an environment variable named *repo*.
+CMake
+=====
 
-The cmake executable is assumed to be in your path. After running
-cmake you can run ccmake or cmake-gui to change settings.
+Out-of-tree builds are recommended. After running cmake you can run
+ccmake or cmake-gui to change settings.
+
+OSAL
+====
+
+The p-net stack uses an abstraction layer that must be built before
+building the stack. See the [OSAL README](https://github.com/rtlabs-com/osal/README.md)
+for detailed instructions for all supported platforms. As an example,
+the build instructions for Linux are:
+
+```console
+$ git clone -b OSAL-1.0 https://github.com/rtlabs-com/osal
+$ cmake -S osal -B build.linux
+$ cmake --build build.linux --target install
+```
+
+This builds and installs the OSAL library in build.linux/install. The
+install directory will be used by the p-net stack build.
 
 Windows
 =======
 
  * Visual Studio 2013 or later
+ * Kvaser CANlib SDK
 
-Start a developer command prompt, then:
+The windows build supports Kvaser devices and requires the Kvaser
+CANlib SDK.
 
-```
-C:\build> cmake %repo%
-C:\build> msbuild ALL_BUILD.vcxproj
-C:\build> msbuild RUN_TESTS.vcxproj
-```
-
-To build NSIS installer:
+Start a Visual Studio developer command prompt, then:
 
 ```
-C:\build> set PATH=%PATH%;\path\to\nsis
-C:\build> msbuild PACKAGE.vcxproj
+> cmake -S p-net -B build.windows -DOSAL_DIR=C:\path\to\osal\build.windows\install
+> cmake --build build.windows --target all
+> cmake --build build.windows --target check
 ```
+
+This builds the stack and runs the unit tests.
 
 Linux
 =====
@@ -71,16 +86,17 @@ Linux
  * GCC 4.6 or later
 
 ```console
-user@host:~/build$ cmake $repo
-user@host:~/build$ make all check
+$ cmake -S p-net -B build.linux -DOSAL_DIR=/path/to/osal/build.linux/install
+$ make -C build.linux all check
 ```
 
-The clang static analyzer can also be used if installed. From a clean
-build directory, run:
+This builds the stack and runs the unit tests.
+
+The clang static analyzer can also be used if installed:
 
 ```console
-user@host:~/build$ scan-build cmake $repo
-user@host:~/build$ scan-build make
+$ scan-build cmake -S p-net -B build.scan -DOSAL_DIR=/path/to/osal/build.linux/install
+$ scan-build make -C build.scan
 ```
 
 rt-kernel
@@ -89,12 +105,16 @@ rt-kernel
  * Workbench 2017.1 or later
 
 Set the following environment variables. You should use a bash shell,
-such as for instance the Command Line in your Toolbox installation.
+such as for instance the Command Line in your Toolbox
+installation. Set BSP and ARCH values as appropriate for your
+hardware.
+
 
 ```console
-user@host:~/build$ export COMPILERS=/opt/rt-tools/compilers
-user@host:~/build$ export RTK=/path/to/rt-kernel
-user@host:~/build$ export BSP=integrator
+$ export COMPILERS=/opt/rt-tools/compilers
+$ export RTK=/path/to/rt-kernel
+$ export BSP=<bsp>
+$ export ARCH=<arch>
 ```
 
 Standalone project
@@ -102,11 +122,12 @@ Standalone project
 
 This creates standalone makefiles.
 
-```
-user@host:~/build$ cmake $repo \
-    -DCMAKE_TOOLCHAIN_FILE=$repo/cmake/toolchain/rt-kernel-arm9e.cmake \
+```console
+$ cmake $repo \
+    -DCMAKE_TOOLCHAIN_FILE=/path/to/osal/build.rtk/install/cmake/toolchain/rt-kernel-$ARCH.cmake \
+    -DOSAL_DIR=/path/to/osal/build.rtk/install \
     -G "Unix Makefiles"
-user@host:~/build$ make all
+$ make all
 ```
 
 Workbench project
@@ -115,22 +136,20 @@ Workbench project
 This creates a Makefile project that can be imported to Workbench. The
 project will be created in the build directory.
 
-```
-user@host:~/build$ cmake $repo \
-    -DCMAKE_TOOLCHAIN_FILE=$repo/cmake/toolchain/rt-kernel-arm9e.cmake \
+```console
+$ cmake $repo \
+    -DCMAKE_TOOLCHAIN_FILE=/path/to/osal/build.rtk/install/cmake/toolchain/rt-kernel-$ARCH.cmake \
+    -DOSAL_DIR=/path/to/osal/build.rtk/install \
     -DCMAKE_ECLIPSE_EXECUTABLE=/opt/rt-tools/workbench/Workbench \
     -DCMAKE_ECLIPSE_GENERATE_SOURCE_PROJECT=TRUE \
     -G "Eclipse CDT4 - Unix Makefiles"
 ```
 
-A source project will also be created in the $repo folder. This
+A source project will also be created in the source folder. This
 project can also be imported to Workbench. After importing,
 right-click on the project and choose *New* -> *Convert to a C/C++
 project*. This will setup the project so that the indexer works
 correctly and the Workbench revision control tools can be used.
-
-For both types of projects, substitute BSP and toolchain file as
-appropriate.
 
 The library and the unit tests will be built. Note that the tests
 require a stack of at least 6 kB. You may have to increase
