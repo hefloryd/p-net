@@ -153,12 +153,22 @@ int pf_cmina_set_default_cfg(
          /* ToDo: Get from permanent pool */
          /* osal_get_perm_pool((uint8_t *)&perm_dcp_ase, sizeof(perm_dcp_ase)); */
 
-         OS_IP4_ADDR_TO_U32(perm_dcp_ase.full_ip_suite.ip_suite.ip_addr,
-            p_cfg->ip_addr.a, p_cfg->ip_addr.b, p_cfg->ip_addr.c, p_cfg->ip_addr.d);
-         OS_IP4_ADDR_TO_U32(perm_dcp_ase.full_ip_suite.ip_suite.ip_mask,
-            p_cfg->ip_mask.a, p_cfg->ip_mask.b, p_cfg->ip_mask.c, p_cfg->ip_mask.d);
-         OS_IP4_ADDR_TO_U32(perm_dcp_ase.full_ip_suite.ip_suite.ip_gateway,
-            p_cfg->ip_gateway.a, p_cfg->ip_gateway.b, p_cfg->ip_gateway.c, p_cfg->ip_gateway.d);
+         perm_dcp_ase.full_ip_suite.ip_suite.ip_addr =
+            OS_IP4_ADDR_TO_U32(p_cfg->ip_addr.a,
+                               p_cfg->ip_addr.b,
+                               p_cfg->ip_addr.c,
+                               p_cfg->ip_addr.d);
+         perm_dcp_ase.full_ip_suite.ip_suite.ip_mask =
+            OS_IP4_ADDR_TO_U32(p_cfg->ip_mask.a,
+                               p_cfg->ip_mask.b,
+                               p_cfg->ip_mask.c,
+                               p_cfg->ip_mask.d);
+         perm_dcp_ase.full_ip_suite.ip_suite.ip_gateway =
+            OS_IP4_ADDR_TO_U32(p_cfg->ip_gateway.a,
+                               p_cfg->ip_gateway.b,
+                               p_cfg->ip_gateway.c,
+                               p_cfg->ip_gateway.d);
+
          memcpy(perm_dcp_ase.name_of_station, p_cfg->station_name, sizeof(perm_dcp_ase.name_of_station));
          perm_dcp_ase.name_of_station[sizeof(perm_dcp_ase.name_of_station) - 1] = '\0';
       }

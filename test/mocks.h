@@ -61,8 +61,8 @@ int mock_os_set_ip_suite(
    os_ipaddr_t             *p_netmask,
    os_ipaddr_t             *p_gw,
    const char              *hostname);
-void mock_os_get_button(uint16_t id, bool *p_pressed);
-void mock_os_set_led(uint16_t id, bool on);
+void mock_os_get_button(uint32_t id, bool *p_pressed);
+void mock_os_set_led(uint32_t id, bool on);
 int mock_pf_alarm_send_diagnosis(
    pf_ar_t                 *p_ar,
    uint32_t                api_id,

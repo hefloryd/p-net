@@ -28,7 +28,9 @@ extern "C"
 
 #include "options.h"
 #include "osal.h"
-#include "log.h"
+#include "osal_log.h"
+#include "osal_eth.h"
+#include "osal_udp.h"
 
 #include "pnet_api.h"
 

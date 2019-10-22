@@ -154,15 +154,14 @@ void mock_os_udp_close(
 {
 }
 
-void mock_os_get_button(
-   uint16_t                id,
-   bool                    *p_pressed)
+bool mock_os_get_button(
+   uint32_t                id)
 {
-   *p_pressed = 0;
+   return false;
 }
 
 void mock_os_set_led(
-   uint16_t                id,
+   uint32_t                id,
    bool                    on)
 {
    mock_os_set_led_count++;
