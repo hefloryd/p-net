@@ -17,32 +17,25 @@
 
 #include "pnal.h"
 
-#include "osal.h"
+#include <ifaddrs.h>
+#include <linux/sysinfo.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+
 #include "options.h"
 #include "osal_log.h"
 #include "pnal_filetools.h"
-
-#include <arpa/inet.h>
-#include <ifaddrs.h>
 #include <linux/ethtool.h>
 #include <linux/if_link.h>
 #include <linux/sockios.h>
 #include <net/if.h>
-#include <pthread.h>
 #include <sys/ioctl.h>
-#include <sys/syscall.h>
 #include <sys/sysinfo.h>
-
 #include <assert.h>
-#include <errno.h>
 #include <fcntl.h>
-#include <limits.h>
-#include <signal.h>
-#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include <unistd.h>
 
 /********************************* Files *************************************/

@@ -13,12 +13,6 @@
  * full license information.
  ********************************************************************/
 
-#ifdef UNIT_TEST
-
-#endif
-
-#include "pf_includes.h"
-
 /*************** Diagnostic strings *****************************************/
 
 /**
@@ -27,6 +21,21 @@
  * @param state            In:   The state.
  * @return  A string representation of the CMPBE state.
  */
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_alarm.h"
+#include "pf_cmdev.h"
+#include "pf_cmpbe.h"
+#include "pf_cmrpc.h"
+#include "pf_fspm.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "options.h"
+
 static const char * pf_cmpbe_state_to_string (pf_cmpbe_state_values_t state)
 {
    const char * s = "<unknown>";

@@ -40,12 +40,18 @@
 
 #include <string.h>
 #include <stdint.h>
-#include <ctype.h>
-#include <inttypes.h>
+#include <stdbool.h>
 
-#include "pf_includes.h"
-#include "pf_block_reader.h"
-#include "pf_block_writer.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_alarm.h"
+#include "pf_cmdev.h"
+#include "pf_diag.h"
+#include "pf_fspm.h"
+#include "pf_ppm.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "options.h"
 
 int pf_diag_init (void)
 {

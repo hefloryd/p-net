@@ -13,11 +13,13 @@
  * full license information.
  ********************************************************************/
 
-#include "pnal.h"
-#include "pf_includes.h"
-
 #include <string.h>
 #include <unistd.h>
+#include <netinet/in.h>
+#include <stdint.h>
+#include <sys/socket.h>
+
+#include "pnal.h"
 
 int pnal_udp_open (pnal_ipaddr_t addr, pnal_ipport_t port)
 {

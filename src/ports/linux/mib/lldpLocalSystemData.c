@@ -18,17 +18,24 @@
  * using mib2c.scalar.conf
  */
 
-#include <net-snmp/net-snmp-config.h>
-#include <net-snmp/net-snmp-includes.h>
-#include <net-snmp/agent/net-snmp-agent-includes.h>
-
 #undef LOG_DEBUG
 #undef LOG_WARNING
 #undef LOG_INFO
 #undef LOG_ERROR
 #undef LOG_FATAL
 
+#include <net-snmp/agent/scalar.h>
+#include <net-snmp/agent/snmp_agent.h>
+#include <net-snmp/library/asn1.h>
+#include <net-snmp/library/oid.h>
+#include <net-snmp/library/snmp.h>
+#include <net-snmp/varbind_api.h>
+
 #include "lldpLocalSystemData.h"
+#include "options.h"
+#include "osal_log.h"
+#include "pf_snmp.h"
+#include "pf_types.h"
 
 /** Initializes the lldpLocalSystemData module */
 void init_lldpLocalSystemData (pnet_t * pnet)

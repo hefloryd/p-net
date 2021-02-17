@@ -13,10 +13,24 @@
  * full license information.
  ********************************************************************/
 
-#include "pf_includes.h"
+#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
+
 #include "pf_block_writer.h"
 #include "pf_block_reader.h"
-#include <string.h>
+#include "options.h"
+#include "osal_log.h"
+#include "pf_cmina.h"
+#include "pf_diag.h"
+#include "pf_file.h"
+#include "pf_lldp.h"
+#include "pf_pdport.h"
+#include "pf_port.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
 
 /**
  * @file

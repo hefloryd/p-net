@@ -18,15 +18,23 @@
  * @brief Linux Ethernet related functions that use \a pnal_eth_handle_t
  */
 
-#include "pnal.h"
-
-#include <net/ethernet.h>
 #include <net/if.h>
 #include <netpacket/packet.h>
 #include <sys/ioctl.h>
-
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
+#include <linux/if_ether.h>
+#include <netinet/in.h>
+#include <stdint.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <sys/types.h>
+
+#include "pnal.h"
+#include "osal.h"
+#include "pnal_sys.h"
+#include "sys/osal_sys.h"
 
 struct pnal_eth_handle
 {

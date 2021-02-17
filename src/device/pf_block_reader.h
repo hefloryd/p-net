@@ -16,6 +16,11 @@
 #ifndef PF_BLOCK_READER_H
 #define PF_BLOCK_READER_H
 
+#include <stdint.h>
+
+#include "options.h"
+#include "pf_types.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

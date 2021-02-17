@@ -13,17 +13,14 @@
  * full license information.
  ********************************************************************/
 
+#include <net-snmp/agent/snmp_agent.h>
+#include <net-snmp/agent/snmp_vars.h>
+#include <net-snmp/library/snmp_api.h>
+#include <net-snmp/library/snmp_debug.h>
+
 #include "pnal.h"
 #include "pnal_options.h"
 #include "osal.h"
-#include "options.h"
-#include "osal_log.h"
-
-#include <net-snmp/net-snmp-config.h>
-#include <net-snmp/net-snmp-features.h>
-#include <net-snmp/net-snmp-includes.h>
-#include <net-snmp/agent/net-snmp-agent-includes.h>
-
 #include "mib/lldpConfigManAddrTable.h"
 #include "mib/lldpLocalSystemData.h"
 #include "mib/lldpLocManAddrTable.h"
@@ -35,6 +32,8 @@
 #include "mib/lldpXPnoLocTable.h"
 #include "mib/lldpXPnoRemTable.h"
 #include "mib/system_mib.h"
+
+struct pnet;
 
 static void pnal_snmp_thread (void * arg)
 {

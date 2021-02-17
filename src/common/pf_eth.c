@@ -30,7 +30,20 @@
 #endif
 
 #include <string.h>
-#include "pf_includes.h"
+#include <netinet/in.h>
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_eth.h"
+#include "pf_lldp.h"
+#include "pf_port.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
 
 int pf_eth_init (pnet_t * net, const pnet_cfg_t * p_cfg)
 {

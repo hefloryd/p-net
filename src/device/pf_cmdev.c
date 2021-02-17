@@ -30,18 +30,32 @@
  *
  */
 
-#ifdef UNIT_TEST
-
-#endif
-
 #include <string.h>
 #include <stdint.h>
 #include <ctype.h>
 #include <inttypes.h>
+#include <stdbool.h>
+#include <stdio.h>
 
-#include "pf_includes.h"
-#include "pf_block_reader.h"
-#include "pf_block_writer.h"
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_alarm.h"
+#include "pf_cmdev.h"
+#include "pf_cmina.h"
+#include "pf_cmio.h"
+#include "pf_cmpbe.h"
+#include "pf_cmrpc.h"
+#include "pf_cmsm.h"
+#include "pf_cmsu.h"
+#include "pf_cmwrr.h"
+#include "pf_diag.h"
+#include "pf_fspm.h"
+#include "pf_pdport.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
 
 /* Forward declaration */
 

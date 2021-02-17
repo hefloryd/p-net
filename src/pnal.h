@@ -36,6 +36,7 @@ extern "C" {
 #include "options.h"
 #include "pnet_api.h"
 #include "pnal_sys.h"
+#include "osal.h"
 
 #define PNAL_MAKEU32(a, b, c, d)                                               \
    (((uint32_t) ((a)&0xff) << 24) | ((uint32_t) ((b)&0xff) << 16) |            \

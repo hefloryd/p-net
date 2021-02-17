@@ -37,8 +37,24 @@
 #include <string.h>
 #include <ctype.h>
 #include <inttypes.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
-#include "pf_includes.h"
+#include "options.h"
+#include "osal_log.h"
+#include "pf_cmdev.h"
+#include "pf_cmina.h"
+#include "pf_cmrpc.h"
+#include "pf_dcp.h"
+#include "pf_file.h"
+#include "pf_fspm.h"
+#include "pf_pdport.h"
+#include "pf_port.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
 
 static const char * hello_sync_name = "hello";
 

@@ -16,6 +16,10 @@
 #ifndef PF_UDP_H
 #define PF_UDP_H
 
+#include <stdint.h>
+
+#include "pnal.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

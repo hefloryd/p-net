@@ -20,8 +20,14 @@
  */
 
 #include <string.h>
-#include "pf_includes.h"
+#include <netinet/in.h>
+#include <stdbool.h>
+#include <stdint.h>
+
 #include "pf_block_writer.h"
+#include "osal.h"
+#include "pf_types.h"
+#include "pnet_api.h"
 
 static const pf_rpc_uuid_type_t null_rpc_handle =
    {0, 0, 0, 0, 0, {0, 0, 0, 0, 0, 0}};

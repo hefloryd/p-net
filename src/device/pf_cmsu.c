@@ -24,12 +24,19 @@
  * Application ready request service.
  */
 
-#ifdef UNIT_TEST
+#include <stdint.h>
 
-#endif
-
-#include <string.h>
-#include "pf_includes.h"
+#include "osal_log.h"
+#include "pf_alarm.h"
+#include "pf_cmdev.h"
+#include "pf_cmdmc.h"
+#include "pf_cmsm.h"
+#include "pf_cmsu.h"
+#include "pf_cpm.h"
+#include "pf_ppm.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "options.h"
 
 void pf_cmsu_init (pnet_t * net)
 {

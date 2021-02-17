@@ -21,8 +21,6 @@
  *
  */
 
-#include "pf_includes.h"
-
 /**
  * @internal
  * Generate an UUID, inspired by version 1, variant 1
@@ -34,6 +32,12 @@
  * @param mac_address      In:   MAC address
  * @param p_uuid           Out:  The generated UUID
  */
+#include <stdint.h>
+
+#include "pf_cmrpc_helpers.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+
 void pf_generate_uuid (
    uint32_t timestamp,
    uint32_t session_number,

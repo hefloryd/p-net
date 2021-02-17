@@ -19,9 +19,32 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
-#include "pf_includes.h"
-#include "pf_block_reader.h"
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_alarm.h"
+#include "pf_cmdev.h"
+#include "pf_cmina.h"
+#include "pf_cmrpc.h"
+#include "pf_cmsu.h"
+#include "pf_cmwrr.h"
+#include "pf_cpm.h"
+#include "pf_dcp.h"
+#include "pf_diag.h"
+#include "pf_eth.h"
+#include "pf_fspm.h"
+#include "pf_lldp.h"
+#include "pf_pdport.h"
+#include "pf_port.h"
+#include "pf_ppm.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "pnal.h"
 
 int pnet_init_only (pnet_t * net, const pnet_cfg_t * p_cfg)
 {

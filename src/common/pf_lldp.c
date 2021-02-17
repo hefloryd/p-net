@@ -36,13 +36,27 @@
  * ToDo: Handle PNET_MAX_PORT ports.
  */
 
-#include "pf_includes.h"
+#include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
 #include "pf_block_writer.h"
 #include "pf_block_reader.h"
-#include "pf_cmrpc.h"
-
-#include <string.h>
-#include <ctype.h>
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_cmina.h"
+#include "pf_eth.h"
+#include "pf_lldp.h"
+#include "pf_pdport.h"
+#include "pf_port.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
 
 #if PNET_MAX_PORT_DESCRIPTION_SIZE > 256
 #error "Port description can't be larger than 255 bytes plus termination"

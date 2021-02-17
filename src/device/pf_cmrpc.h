@@ -16,6 +16,10 @@
 #ifndef PF_CMRPC_H
 #define PF_CMRPC_H
 
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

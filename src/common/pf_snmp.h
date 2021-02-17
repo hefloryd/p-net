@@ -101,6 +101,12 @@
 #ifndef PF_SNMP_H
 #define PF_SNMP_H
 
+#include <stddef.h>
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

@@ -16,6 +16,11 @@
 #ifndef PF_CMIO_H
 #define PF_CMIO_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

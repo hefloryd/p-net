@@ -16,6 +16,9 @@
 #ifndef PF_DIAG_H
 #define PF_DIAG_H
 
+#include <stdint.h>
+
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

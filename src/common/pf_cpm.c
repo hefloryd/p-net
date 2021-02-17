@@ -36,8 +36,26 @@
 #endif
 
 #include <string.h>
-#include "pf_includes.h"
-#include "pf_block_reader.h"
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_cmdev.h"
+#include "pf_cmdmc.h"
+#include "pf_cmio.h"
+#include "pf_cmsu.h"
+#include "pf_cpm.h"
+#include "pf_eth.h"
+#include "pf_fspm.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
+#include "sys/osal_sys.h"
 
 static const char * cpm_sync_name = "cpm";
 

@@ -20,7 +20,11 @@
 #ifndef LLDPREMMANADDRTABLE_H
 #define LLDPREMMANADDRTABLE_H
 
+#include <net-snmp/agent/agent_handler.h>
+#include <net-snmp/agent/table_iterator.h>
+
 #include "pf_includes.h"
+#include "pnet_api.h"
 
 /* function declarations */
 void init_lldpRemManAddrTable (pnet_t * pnet);

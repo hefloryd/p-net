@@ -16,6 +16,10 @@
 #ifndef PF_CMDMC_H
 #define PF_CMDMC_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "pf_types.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

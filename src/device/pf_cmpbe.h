@@ -16,6 +16,8 @@
 #ifndef PF_CMPBE_H
 #define PF_CMPBE_H
 
+#include "pf_types.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

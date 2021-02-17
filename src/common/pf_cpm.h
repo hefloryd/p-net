@@ -16,6 +16,12 @@
 #ifndef PF_CPM_H
 #define PF_CPM_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

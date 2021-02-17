@@ -16,6 +16,12 @@
 #ifndef PF_PORT_H
 #define PF_PORT_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

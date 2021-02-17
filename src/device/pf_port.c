@@ -13,9 +13,17 @@
  * full license information.
  ********************************************************************/
 
-#include "pf_includes.h"
-
 #include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "options.h"
+#include "osal.h"
+#include "pf_port.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
 
 #if PNET_MAX_PORT < 1
 #error "PNET_MAX_PORT needs to be at least 1"

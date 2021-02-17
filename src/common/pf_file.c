@@ -28,13 +28,21 @@
 #define pnal_save_file  mock_pnal_save_file
 #endif
 
-#include "pf_includes.h"
-#include "pf_block_reader.h"
-#include "pf_block_writer.h"
-
 #include <inttypes.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "pf_block_reader.h"
+#include "pf_block_writer.h"
+#include "options.h"
+#include "osal_log.h"
+#include "pf_file.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
+#include "pnal.h"
 
 #define PF_FILE_MAGIC 0x504E4554U /* "PNET" */
 

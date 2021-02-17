@@ -33,11 +33,17 @@
  * affected by the rest of the stack.
  */
 
-#ifdef UNIT_TEST
+#include <stdint.h>
+#include <stdio.h>
 
-#endif
-
-#include "pf_includes.h"
+#include "osal_log.h"
+#include "pf_cmdev.h"
+#include "pf_cmsm.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
+#include "options.h"
 
 static const char * cmsm_sync_name = "cmsm";
 

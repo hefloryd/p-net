@@ -25,14 +25,21 @@
  *
  */
 
-#ifdef UNIT_TEST
-
-#endif
-
 #include <string.h>
+#include <stddef.h>
+#include <stdio.h>
 
-#include "pf_includes.h"
 #include "pf_block_writer.h"
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_cmdev.h"
+#include "pf_cmina.h"
+#include "pf_cmrpc.h"
+#include "pf_cpm.h"
+#include "pf_lldp.h"
+#include "pf_port.h"
+#include "pf_ppm.h"
 
 #define STRINGIFY(s)   STRINGIFIED (s)
 #define STRINGIFIED(s) #s

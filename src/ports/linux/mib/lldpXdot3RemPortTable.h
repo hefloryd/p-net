@@ -20,7 +20,11 @@
 #ifndef LLDPXDOT3REMPORTTABLE_H
 #define LLDPXDOT3REMPORTTABLE_H
 
+#include <net-snmp/agent/agent_handler.h>
+#include <net-snmp/agent/table_iterator.h>
+
 #include "pf_includes.h"
+#include "pnet_api.h"
 
 /* function declarations */
 void init_lldpXdot3RemPortTable (pnet_t * pnet);

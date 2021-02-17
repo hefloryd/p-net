@@ -18,20 +18,31 @@
  * using mib2c.scalar.conf
  */
 
-#include <net-snmp/net-snmp-config.h>
-#include <net-snmp/net-snmp-includes.h>
-#include <net-snmp/agent/net-snmp-agent-includes.h>
-
 #undef LOG_DEBUG
 #undef LOG_WARNING
 #undef LOG_INFO
 #undef LOG_ERROR
 #undef LOG_FATAL
 
-#include "system_mib.h"
-#include "pnal_options.h"
-
 #include <sys/sysinfo.h>
+#include <linux/sysinfo.h>
+#include <net-snmp/agent/scalar.h>
+#include <net-snmp/agent/snmp_agent.h>
+#include <net-snmp/library/asn1.h>
+#include <net-snmp/library/check_varbind.h>
+#include <net-snmp/library/oid.h>
+#include <net-snmp/library/snmp.h>
+#include <net-snmp/library/snmp_impl.h>
+#include <net-snmp/library/tools.h>
+#include <net-snmp/types.h>
+#include <net-snmp/varbind_api.h>
+#include <stdint.h>
+#include <string.h>
+
+#include "system_mib.h"
+#include "options.h"
+#include "osal_log.h"
+#include "pf_snmp.h"
 
 /** Initializes the system_mib module */
 void init_system_mib (pnet_t * pnet)

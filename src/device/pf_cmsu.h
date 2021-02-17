@@ -16,6 +16,10 @@
 #ifndef PF_CMSU_H
 #define PF_CMSU_H
 
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

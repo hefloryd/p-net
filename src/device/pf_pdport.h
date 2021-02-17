@@ -21,6 +21,10 @@ extern "C" {
 #endif
 
 #include <stddef.h>
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnet_api.h"
 
 /**
  * Initialize PDPort.

@@ -15,14 +15,13 @@
 
 #include "sampleapp_common.h"
 
+#include <pnet_api.h>
+#include <stdio.h>
+#include <string.h>
+
 #include "osal.h"
 #include "pnal.h"
-#include <pnet_api.h>
 #include "version.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 /************************ Diagnostic printing ********************************/
 

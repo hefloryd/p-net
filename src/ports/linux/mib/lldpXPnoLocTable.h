@@ -20,7 +20,11 @@
 #ifndef LLDPXPNOLOCTABLE_H
 #define LLDPXPNOLOCTABLE_H
 
+#include <net-snmp/agent/agent_handler.h>
+#include <net-snmp/agent/table_iterator.h>
+
 #include "pf_includes.h"
+#include "pnet_api.h"
 
 /* function declarations */
 void init_lldpXPnoLocTable (pnet_t * pnet);

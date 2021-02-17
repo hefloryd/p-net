@@ -20,7 +20,11 @@
 #ifndef LLDPCONFIGMANADDRTABLE_H
 #define LLDPCONFIGMANADDRTABLE_H
 
+#include <net-snmp/agent/agent_handler.h>
+#include <net-snmp/agent/table_iterator.h>
+
 #include "pf_includes.h"
+#include "pnet_api.h"
 
 /* function declarations */
 void init_lldpConfigManAddrTable (pnet_t * pnet);

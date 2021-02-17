@@ -20,7 +20,11 @@
 #ifndef LLDPLOCMANADDRTABLE_H
 #define LLDPLOCMANADDRTABLE_H
 
+#include <net-snmp/agent/agent_handler.h>
+#include <net-snmp/agent/table_iterator.h>
+
 #include "pf_includes.h"
+#include "pnet_api.h"
 
 /* function declarations */
 void init_lldpLocManAddrTable (pnet_t * pnet);

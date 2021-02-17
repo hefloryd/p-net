@@ -15,24 +15,21 @@
 
 #define _GNU_SOURCE /* For asprintf() */
 
-#include "sampleapp_common.h"
-
-#include "options.h" /* Rename/remove when #224 is solved */
-#include "osal.h"
-#include "osal_log.h" /* For LOG_LEVEL */
-#include "pnal.h"
-#include "pnal_filetools.h"
 #include <pnet_api.h>
-#include "version.h" /* Rename/remove when #224 is solved */
-
-#include <net/if.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <bits/getopt_core.h>
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "sampleapp_common.h"
+#include "options.h" /* Rename/remove when #224 is solved */
+#include "osal.h"
+#include "pnal_filetools.h"
+#include "version.h" /* Rename/remove when #224 is solved */
+#include "sys/osal_sys.h"
 
 #if PNET_MAX_PORT == 1
 #define APP_DEFAULT_ETHERNET_INTERFACE "eth0"

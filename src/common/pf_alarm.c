@@ -48,19 +48,34 @@
  *
  */
 
-#ifdef UNIT_TEST
-#endif
-
 /*
  * ToDo:
  * 1) Send UDP frames.
  */
 
 #include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
-#include "pf_includes.h"
 #include "pf_block_reader.h"
 #include "pf_block_writer.h"
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_alarm.h"
+#include "pf_cmdev.h"
+#include "pf_cmina.h"
+#include "pf_cmrpc.h"
+#include "pf_cmsu.h"
+#include "pf_eth.h"
+#include "pf_fspm.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
 
 #define PF_FRAME_ID_ALARM_HIGH 0xfc01
 #define PF_FRAME_ID_ALARM_LOW  0xfe01

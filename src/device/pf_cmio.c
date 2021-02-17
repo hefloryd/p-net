@@ -27,11 +27,17 @@
  *
  */
 
-#ifdef UNIT_TEST
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
-#endif
-
-#include "pf_includes.h"
+#include "osal_log.h"
+#include "pf_cmdev.h"
+#include "pf_cmio.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "options.h"
 
 #define PF_CMIO_TIMER_PERIOD (100 * 1000) /* us */
 

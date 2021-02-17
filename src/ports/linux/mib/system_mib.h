@@ -20,7 +20,10 @@
 #ifndef SYSTEM_MIB_H
 #define SYSTEM_MIB_H
 
+#include <net-snmp/agent/agent_handler.h>
+
 #include "pf_includes.h"
+#include "pnet_api.h"
 
 /* function declarations */
 void init_system_mib (pnet_t * pnet);

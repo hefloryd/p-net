@@ -16,6 +16,12 @@
 #ifndef PF_ETH_H
 #define PF_ETH_H
 
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

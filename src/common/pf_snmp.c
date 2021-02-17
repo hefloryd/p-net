@@ -31,8 +31,23 @@
 #define pf_fspm_save_im_location     mock_pf_fspm_save_im_location
 #endif
 
-#include "pf_includes.h"
 #include <string.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include "options.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_cmina.h"
+#include "pf_file.h"
+#include "pf_lldp.h"
+#include "pf_port.h"
+#include "pf_snmp.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
+#include "pf_fspm.h"
 
 #define STRINGIFY(s)   STRINGIFIED (s)
 #define STRINGIFIED(s) #s

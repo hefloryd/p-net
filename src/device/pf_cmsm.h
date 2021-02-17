@@ -16,6 +16,8 @@
 #ifndef PF_CMSM_H
 #define PF_CMSM_H
 
+#include "pf_types.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

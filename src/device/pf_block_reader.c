@@ -25,14 +25,12 @@
  *
  */
 
-#ifdef UNIT_TEST
-
-#endif
-
 #include <string.h>
+#include <stdbool.h>
 
-#include "pf_includes.h"
 #include "pf_block_reader.h"
+#include "osal.h"
+#include "osal_log.h"
 
 void pf_get_mem (
    pf_get_info_t * p_info,

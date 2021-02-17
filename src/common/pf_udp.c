@@ -18,15 +18,19 @@
  * @brief UDP communications
  */
 
+#include <stdint.h>
+
+#include "osal_log.h"
+#include "pf_udp.h"
+#include "pnal.h"
+#include "pnet_api.h"
+#include "options.h"
 #ifdef UNIT_TEST
 #define pnal_udp_close    mock_pnal_udp_close
 #define pnal_udp_open     mock_pnal_udp_open
 #define pnal_udp_recvfrom mock_pnal_udp_recvfrom
 #define pnal_udp_sendto   mock_pnal_udp_sendto
 #endif
-
-#include <string.h>
-#include "pf_includes.h"
 
 int pf_udp_open (pnet_t * net, pnal_ipport_t port)
 {

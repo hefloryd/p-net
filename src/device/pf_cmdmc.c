@@ -13,11 +13,11 @@
  * full license information.
  ********************************************************************/
 
-#ifdef UNIT_TEST
+#include <stdbool.h>
+#include <stdint.h>
 
-#endif
-
-#include "pf_includes.h"
+#include "pf_cmdmc.h"
+#include "pf_types.h"
 
 int pf_cmdmc_activate_req (pf_ar_t * p_ar)
 {

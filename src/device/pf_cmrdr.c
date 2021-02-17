@@ -13,12 +13,24 @@
  * full license information.
  ********************************************************************/
 
-#ifdef UNIT_TEST
-#endif
-
 #include <string.h>
-#include "pf_includes.h"
+#include <stdbool.h>
+#include <stdint.h>
+
 #include "pf_block_writer.h"
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_cmdev.h"
+#include "pf_cmrdr.h"
+#include "pf_cmsm.h"
+#include "pf_cpm.h"
+#include "pf_fspm.h"
+#include "pf_pdport.h"
+#include "pf_port.h"
+#include "pf_ppm.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "options.h"
 
 /**
  * @file

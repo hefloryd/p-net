@@ -20,7 +20,10 @@
 #ifndef LLDPLOCALSYSTEMDATA_H
 #define LLDPLOCALSYSTEMDATA_H
 
+#include <net-snmp/agent/agent_handler.h>
+
 #include "pf_includes.h"
+#include "pnet_api.h"
 
 /* function declarations */
 void init_lldpLocalSystemData (pnet_t * pnet);

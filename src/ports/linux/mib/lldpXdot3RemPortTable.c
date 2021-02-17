@@ -18,17 +18,29 @@
  * using mib2c.iterate.conf
  */
 
-#include <net-snmp/net-snmp-config.h>
-#include <net-snmp/net-snmp-includes.h>
-#include <net-snmp/agent/net-snmp-agent-includes.h>
-
 #undef LOG_DEBUG
 #undef LOG_WARNING
 #undef LOG_INFO
 #undef LOG_ERROR
 #undef LOG_FATAL
 
+#include <net-snmp/agent/snmp_agent.h>
+#include <net-snmp/agent/table.h>
+#include <net-snmp/library/asn1.h>
+#include <net-snmp/library/oid.h>
+#include <net-snmp/library/snmp.h>
+#include <net-snmp/library/snmp_impl.h>
+#include <net-snmp/library/tools.h>
+#include <net-snmp/types.h>
+#include <net-snmp/varbind_api.h>
+#include <stddef.h>
+#include <stdint.h>
+
 #include "lldpXdot3RemPortTable.h"
+#include "options.h"
+#include "osal_log.h"
+#include "pf_snmp.h"
+#include "pf_types.h"
 
 /** Initializes the lldpXdot3RemPortTable module */
 void init_lldpXdot3RemPortTable (pnet_t * pnet)

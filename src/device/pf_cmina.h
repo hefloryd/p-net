@@ -16,6 +16,12 @@
 #ifndef PF_CMINA_H
 #define PF_CMINA_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

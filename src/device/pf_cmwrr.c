@@ -13,15 +13,6 @@
  * full license information.
  ********************************************************************/
 
-#ifdef UNIT_TEST
-
-#endif
-
-#include "pf_includes.h"
-#include "pf_block_reader.h"
-#include "pf_block_writer.h"
-#include "pf_block_reader.h"
-
 /**
  * @file
  * @brief Implements the Context Management Write Record Responder protocol
@@ -31,6 +22,21 @@
  *
  * Triggers the \a pnet_write_ind() user callback for some values.
  */
+
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include "osal_log.h"
+#include "pf_cmrdr.h"
+#include "pf_cmsm.h"
+#include "pf_cmwrr.h"
+#include "pf_fspm.h"
+#include "pf_pdport.h"
+#include "pf_port.h"
+#include "pf_types.h"
+#include "pnet_api.h"
+#include "options.h"
 
 void pf_cmwrr_init (pnet_t * net)
 {

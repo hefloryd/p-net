@@ -17,10 +17,20 @@
 #define os_get_current_time_us mock_os_get_current_time_us
 #endif
 
-#include "pf_includes.h"
-
 #include <inttypes.h>
 #include <string.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
+#include "options.h"
 
 static bool pf_scheduler_is_linked (pnet_t * net, uint32_t first, uint32_t ix)
 {

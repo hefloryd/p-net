@@ -22,6 +22,13 @@
 #ifndef PF_LLDP_H
 #define PF_LLDP_H
 
+#include <stddef.h>
+#include <stdint.h>
+
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

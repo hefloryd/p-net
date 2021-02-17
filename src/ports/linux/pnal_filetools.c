@@ -18,17 +18,15 @@
 
 #include "pnal_filetools.h"
 
-#include "options.h"
-#include "osal_log.h"
-
 #include <sys/stat.h>
 #include <sys/wait.h>
-
 #include <libgen.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+
+#include "options.h"
+#include "osal_log.h"
 
 bool pnal_does_file_exist (const char * filepath)
 {

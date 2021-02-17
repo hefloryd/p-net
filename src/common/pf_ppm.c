@@ -39,10 +39,26 @@
 #define os_get_current_time_us mock_os_get_current_time_us
 #endif
 
-#include "pf_includes.h"
-
 #include <string.h>
 #include <inttypes.h>
+#include <netinet/in.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include "osal.h"
+#include "osal_log.h"
+#include "pf_cmdev.h"
+#include "pf_cmsu.h"
+#include "pf_eth.h"
+#include "pf_ppm.h"
+#include "pf_scheduler.h"
+#include "pf_types.h"
+#include "pnal.h"
+#include "pnal_sys.h"
+#include "pnet_api.h"
+#include "sys/osal_cc.h"
+#include "options.h"
 
 static const char * ppm_sync_name = "ppm";
 

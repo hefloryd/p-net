@@ -16,6 +16,10 @@
 #ifndef PF_DCP_H
 #define PF_DCP_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "pnet_api.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
